@@ -39,4 +39,13 @@ console.log(str.match(/\w\d\w\d/i));
 
 // console.log('12-34-56'.replace(/-/g, ':'));
 
-
+function getSum(a, b) {
+    function sum() {
+        console.log(this.a);
+        return a + b;
+    }
+ 
+    console.log(sum());
+}
+ 
+getSum(4, 5);

@@ -1,24 +1,35 @@
 const btn = document.querySelector('.btn');
 let   timer, // Змінна повина бути оголошена в цьому місці, так як обробник подій створює локальну область бачення і clearInterval
       i = 0; // Дозволить відслідковувати скільки разів повторилась асинхрона функція setInterval
+let   pos = 0; 
+
+// function myAnimation(){
+//     const elem = document.querySelector('.box');
+//     let pos = 0;
+
+//     const id = setInterval(frame, 10);
+//     function frame(){
+//         if(pos === 300){
+//             clearInterval(id);
+//         } else {
+//             pos++;
+//             elem.style.top = pos + 'px';
+//             elem.style.left = pos + 'px';
+//         }
+//     }
+// }
 
 function myAnimation(){
-    const elem = document.querySelector('.box');
-    let pos = 0;
-
-    const id = setInterval(frame, 10);
-    function frame(){
-        if(pos === 300){
-            clearInterval(id);
-        } else {
-            pos++;
-            elem.style.top = pos + 'px';
-            elem.style.left = pos + 'px';
-        }
+    pos++;
+    elem.style.top = pos + 'px';
+    elem.style.left = pos + 'px';
+    
+    if(pos < 300){
+        requestAnimationFrame(myAnimation);
     }
 }
 
-btn.addEventListener('click', myAnimation);
+btn.addEventListener('click', () => requestAnimationFrame(myAnimation));
 // btn.addEventListener('click', () => {
 //     // const timer = setTimeout(test, 2000, 'hello');
 //     timer = setInterval(logger, 2000, 'hello');
